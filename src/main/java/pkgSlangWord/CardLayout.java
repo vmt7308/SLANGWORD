@@ -248,7 +248,7 @@ public class CardLayout implements ItemListener, ActionListener {
 
             }
         });
-        
+
         mainPane.addComponentToPane(frame.getContentPane());
     }
 
@@ -260,7 +260,7 @@ public class CardLayout implements ItemListener, ActionListener {
             System.out.println("Search definition by : " + searchSlang.getText());
             ArrayList<String> defineResult = slangWordList.get(searchSlang.getText());
             slangResultLayout.removeAll();
-            
+
             if (defineResult != null) {
                 try {
                     historySlangList.add(keySlang);
@@ -280,7 +280,7 @@ public class CardLayout implements ItemListener, ActionListener {
             } else {
                 slangResultLayout.add(new JLabel("Not result..."));
             }
-            
+
             slangLayout.add(slangResultLayout, BorderLayout.SOUTH);
             slangLayout.revalidate();
             slangLayout.repaint();
@@ -347,29 +347,24 @@ public class CardLayout implements ItemListener, ActionListener {
         }
     }
 
-    public void slangSearchHistory() 
-    {
+    public void slangSearchHistory() {
         historyLayout.removeAll();
-        
-        if (historySlangList == null) 
-        {
+
+        if (historySlangList == null) {
             historyLayout.add(new JLabel("Not result.."));
             System.out.println("Not Result...");
-        } else 
-        {
-            try 
-            {
-                for (String word : historySlangList) 
-                {
+        } else {
+            try {
+                for (String word : historySlangList) {
                     JLabel jText = new JLabel(word);
-                    
+
                     Border border = jText.getBorder();
                     Border margin = new EmptyBorder(10, 20, 10, 20);
-                    
+
                     jText.setBorder(new CompoundBorder(border, margin));
                     jText.setBackground(Color.lightGray);
                     jText.setOpaque(true);
-                    
+
                     historyLayout.add(jText);
                 }
             } catch (Exception e) {
@@ -381,23 +376,22 @@ public class CardLayout implements ItemListener, ActionListener {
         historyLayout.repaint();
     }
 
-    public void createLayout() 
-    {
+    public void createLayout() {
         createLayout = new JPanel();
         createLayout.setLayout(new GridBagLayout());
 
         GridBagConstraints constraints = new GridBagConstraints();
-        
+
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.insets = new Insets(10, 10, 10, 10);
 
         createSlangTextField = new JTextField("", 20);
         createDefineTextField = new JTextField("", 20);
-        
+
         JLabel labelSlang = new JLabel("Enter slang: ");
         JLabel labelDefine = new JLabel("Enter define: ");
         JButton createButton = new JButton("Create");
-        
+
         createButton.setActionCommand("createButton");
         createButton.addActionListener(this);
 
@@ -430,32 +424,25 @@ public class CardLayout implements ItemListener, ActionListener {
     public void addSlangWordFunction() {
         String slang = createSlangTextField.getText();
         String define = createDefineTextField.getText();
-        if (slang != "" && define != "") 
-        {
+        if (slang != "" && define != "") {
             System.out.println("add new slang");
-            if (slangWordList.keySet().contains(slang))
-            {
+            if (slangWordList.keySet().contains(slang)) {
                 String[] options = {"Duplicate", "Overwrite", "Cancel"};
                 int result = JOptionPane.showOptionDialog(null, "This word already exists. Do you want to duplicate it?", "Message: " + "Add new slang word", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-                
+
                 if (result == JOptionPane.YES_OPTION) {
                     System.out.println("Duplicate word");
-                    
-                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
-                    {
-                        if (entry.getKey().contains(slang)) 
-                        {
+
+                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
+                        if (entry.getKey().contains(slang)) {
                             entry.getValue().add(define);
                             break;
                         }
                     }
-                } else if (result == JOptionPane.NO_OPTION) 
-                {
+                } else if (result == JOptionPane.NO_OPTION) {
                     System.out.println("Overwrite word");
-                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
-                    {
-                        if (entry.getKey().contains(slang)) 
-                        {
+                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
+                        if (entry.getKey().contains(slang)) {
                             entry.getValue().clear();
                             entry.getValue().add(define);
                             break;
@@ -471,8 +458,7 @@ public class CardLayout implements ItemListener, ActionListener {
         }
     }
 
-    public void editLayout() 
-    {
+    public void editLayout() {
         editLayout = new JPanel();
         editLayout.setLayout(new GridBagLayout());
 
@@ -515,8 +501,7 @@ public class CardLayout implements ItemListener, ActionListener {
                 BorderFactory.createEtchedBorder(), "Eidit slang word"));
     }
 
-    public void eidtSlangFunction() 
-    {
+    public void eidtSlangFunction() {
         System.out.println("Click edit button");
         System.out.println("Slang word edit " + editSlangTextField.getText());
         System.out.println("Define edit " + editDefineTextField.getText());
@@ -524,36 +509,31 @@ public class CardLayout implements ItemListener, ActionListener {
         String editdefine = editDefineTextField.getText();
 
         System.out.println("edit new slang");
-        
-        if (slangWordList.keySet().contains(editslang)) 
-        {
-            for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
-            {
-                if (entry.getKey().contains(editslang)) 
-                {
+
+        if (slangWordList.keySet().contains(editslang)) {
+            for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
+                if (entry.getKey().contains(editslang)) {
                     entry.getValue().clear();
                     entry.getValue().add(editdefine);
                     break;
                 }
             }
-            
+
             JOptionPane.showConfirmDialog(null,
                     "Edit slang comppleted", "Be ok!", JOptionPane.DEFAULT_OPTION);
             System.out.println("edit  slang comppleted");
-        } else 
-        {
+        } else {
             JOptionPane.showConfirmDialog(null,
                     "Slang word doesn't exist", "Be ok!", JOptionPane.DEFAULT_OPTION);
         }
     }
 
-    public void deleteLayout() 
-    {
+    public void deleteLayout() {
         deleteLayout = new JPanel();
         deleteLayout.setLayout(new GridBagLayout());
 
         GridBagConstraints constraints = new GridBagConstraints();
-        
+
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.insets = new Insets(10, 10, 10, 10);
 
@@ -585,29 +565,24 @@ public class CardLayout implements ItemListener, ActionListener {
                 BorderFactory.createEtchedBorder(), "Delete slang word"));
     }
 
-    public void deleteSlang() 
-    {
+    public void deleteSlang() {
         String deleteSlang = deleteSlangTextField.getText();
         System.out.println("delete  slang: " + deleteSlang);
-        
-        if (slangWordList.keySet().contains(deleteSlang.trim())) 
-        {
+
+        if (slangWordList.keySet().contains(deleteSlang.trim())) {
             int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure delete this word?", "Warning", JOptionPane.YES_NO_OPTION);
-            
-            if (dialogResult == JOptionPane.YES_OPTION) 
-            {
+
+            if (dialogResult == JOptionPane.YES_OPTION) {
                 slangWordList.remove(deleteSlang);
             }
             System.out.println("edit  slang comppleted");
-        } else 
-        {
+        } else {
             JOptionPane.showConfirmDialog(null,
                     "Slang word doesn't exist", "Be ok!", JOptionPane.DEFAULT_OPTION);
         }
     }
 
-    public void backupLayout() 
-    {
+    public void backupLayout() {
         backupLayout = new JPanel();
         backupLayout.setLayout(new GridBagLayout());
 
@@ -637,14 +612,12 @@ public class CardLayout implements ItemListener, ActionListener {
                 BorderFactory.createEtchedBorder(), "Delete slang word"));
     }
 
-    void backup() 
-    {
+    void backup() {
         slangFunction.reset();
         slangWordList = slangFunction.getSlangWordList();
     }
 
-    void randomLayout() 
-    {
+    void randomLayout() {
         randomLayout = new JPanel();
         randomLayout.setLayout(new GridBagLayout());
 
@@ -681,35 +654,33 @@ public class CardLayout implements ItemListener, ActionListener {
 
     void random() {
         randomLayout.removeAll();
-        
+
         Random rand = new Random();
-        
+
         int int_random = rand.nextInt(slangWordList.size() - 1);
         Object[] news = slangWordList.keySet().toArray();
         randomSlang.setText(news[int_random].toString());
 
         for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
 
-            if (entry.getKey().contains(news[int_random].toString())) 
-            {
+            if (entry.getKey().contains(news[int_random].toString())) {
                 System.out.println(entry.getKey());
-                
-                for (String definfe : entry.getValue()) 
-                {
+
+                for (String definfe : entry.getValue()) {
                     System.out.println(definfe);
-                    
+
                     JLabel jText = new JLabel(definfe);
-                    
+
                     Border border = jText.getBorder();
                     Border margin = new EmptyBorder(10, 20, 10, 20);
-                    
+
                     jText.setBorder(new CompoundBorder(border, margin));
                     jText.setBackground(Color.lightGray);
                     jText.setOpaque(true);
 
                     randomDefineLayout.add(jText);
                 }
-                
+
                 break;
             }
         }
@@ -733,8 +704,7 @@ public class CardLayout implements ItemListener, ActionListener {
         randomLayout.repaint();
     }
 
-    public void quiz1Layout() 
-    {
+    public void quiz1Layout() {
         quiz1Layout = new JPanel();
         quiz1Layout.setLayout(new BorderLayout());
         quiz1QuestionLayout = new JPanel();
@@ -751,32 +721,27 @@ public class CardLayout implements ItemListener, ActionListener {
 
         //get random slang word
         Random rand = new Random();
-        
+
         int int_random = rand.nextInt(slangWordList.size() - 1);
-        
+
         Object[] news = slangWordList.keySet().toArray();
         String quizSring = "QUIZ, Choose define of the slang word \"" + news[int_random].toString() + "\":";
 
         ArrayList<String> answerList = new ArrayList<String>();
 
         boolean addFlag = false;
-        for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
-        {
+        for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
 
-            if (answerList.size() == 4) 
-            {
+            if (answerList.size() == 4) {
                 break;
             }
-            if (entry.getKey().contains(news[int_random].toString())) 
-            {
+            if (entry.getKey().contains(news[int_random].toString())) {
                 System.out.println(entry.getKey());
                 quiz1AnswerCorrec = entry.getValue().get(0);
                 answerList.add(quiz1AnswerCorrec);
                 addFlag = true;
-            } else if (addFlag) 
-            {
-                if (!entry.getValue().isEmpty()) 
-                {
+            } else if (addFlag) {
+                if (!entry.getValue().isEmpty()) {
                     answerList.add(entry.getValue().get(0));
                 }
             }
@@ -786,7 +751,7 @@ public class CardLayout implements ItemListener, ActionListener {
         list.add(1);
         list.add(2);
         list.add(3);
-        
+
         list = getRandomElement(list, 4);
 
         quiz1RadioButton1.setText(answerList.get(list.get(0)));
@@ -851,36 +816,27 @@ public class CardLayout implements ItemListener, ActionListener {
         quiz1Layout.add(quiz1AnswerLayout, BorderLayout.CENTER);
     }
 
-    public void quiz1() 
-    {
-        if (quiz1RadioButton1.isSelected()) 
-        {
+    public void quiz1() {
+        if (quiz1RadioButton1.isSelected()) {
             quiz1Answer = quiz1RadioButton1.getText();
-        } else if (quiz1RadioButton2.isSelected()) 
-        {
+        } else if (quiz1RadioButton2.isSelected()) {
             quiz1Answer = quiz1RadioButton2.getText();
-        } else if (quiz1RadioButton3.isSelected()) 
-        {
+        } else if (quiz1RadioButton3.isSelected()) {
             quiz1Answer = quiz1RadioButton3.getText();
-        } else if (quiz1RadioButton4.isSelected()) 
-        {
+        } else if (quiz1RadioButton4.isSelected()) {
             quiz1Answer = quiz1RadioButton4.getText();
-        } else 
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Please, choose answer", "Message", JOptionPane.PLAIN_MESSAGE);
         }
 
-        if (quiz1Answer == quiz1AnswerCorrec) 
-        {
+        if (quiz1Answer == quiz1AnswerCorrec) {
             JOptionPane.showMessageDialog(null, "Correct", "Result", JOptionPane.PLAIN_MESSAGE);
-        } else 
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Wrong", "Result", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
-    public ArrayList<Integer> getRandomElement(ArrayList<Integer> list, int totalItems) 
-    {
+    public ArrayList<Integer> getRandomElement(ArrayList<Integer> list, int totalItems) {
         Random rand = new Random();
 
         // create a temporary list for storing
@@ -901,12 +857,11 @@ public class CardLayout implements ItemListener, ActionListener {
         return newList;
     }
 
-    public void quiz2Layout() 
-    {
+    public void quiz2Layout() {
         quiz2Layout = new JPanel();
         quiz2QuestionLayout = new JPanel();
         quiz2Layout.setLayout(new BorderLayout());
-        
+
         //quiz1QuestionLayout.setBackground(Color.RED);       
         quiz2AnswerLayout = new JPanel();
 
@@ -928,22 +883,20 @@ public class CardLayout implements ItemListener, ActionListener {
 
         ArrayList<String> answerList = new ArrayList<String>();
         answerList.add(quiz2AnswerCorrec);
-        
+
         boolean addFlag = false;
         for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
 
             if (answerList.size() == 4) {
                 break;
             }
-            if (entry.getKey().contains(quiz2AnswerCorrec)) 
-            {
+            if (entry.getKey().contains(quiz2AnswerCorrec)) {
                 System.out.println(entry.getKey());
                 if (!entry.getValue().isEmpty()) {
                     define = entry.getValue().get(0);
                 }
                 addFlag = true;
-            } else if (addFlag && !entry.getKey().contains(quiz2AnswerCorrec)) 
-            {
+            } else if (addFlag && !entry.getKey().contains(quiz2AnswerCorrec)) {
                 if (!entry.getValue().isEmpty()) {
                     answerList.add(entry.getKey());
                 }
@@ -1020,17 +973,13 @@ public class CardLayout implements ItemListener, ActionListener {
     }
 
     public void quiz2() {
-        if (quiz2RadioButton1.isSelected()) 
-        {
+        if (quiz2RadioButton1.isSelected()) {
             quiz2Answer = quiz2RadioButton1.getText();
-        } else if (quiz2RadioButton2.isSelected()) 
-        {
+        } else if (quiz2RadioButton2.isSelected()) {
             quiz2Answer = quiz2RadioButton2.getText();
-        } else if (quiz2RadioButton3.isSelected()) 
-        {
+        } else if (quiz2RadioButton3.isSelected()) {
             quiz2Answer = quiz2RadioButton3.getText();
-        } else if (quiz2RadioButton4.isSelected()) 
-        {
+        } else if (quiz2RadioButton4.isSelected()) {
             quiz2Answer = quiz2RadioButton4.getText();
         }
 
