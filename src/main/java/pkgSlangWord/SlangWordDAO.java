@@ -29,6 +29,7 @@ public class SlangWordDAO {
     
     public HashMap<String, ArrayList<String>> read(){
         HashMap<String, ArrayList<String>> slangwords = new HashMap<String, ArrayList<String>>();
+        
         FileInputStream fis = null;
         ObjectInputStream ois = null;
 
@@ -66,9 +67,11 @@ public class SlangWordDAO {
 
                   
                }       
-            } catch(Exception e) {
+            } catch(Exception e) 
+            {
                e.printStackTrace();
-            }finally{
+            }finally
+            {
                 closeStream(fis);
                 closeStream(ois);
             }
@@ -89,12 +92,15 @@ public class SlangWordDAO {
                 fos = new FileOutputStream(FILENAME);
                 byte[] buffer = new byte[1024];
                 int length;
-                while ((length = fis.read(buffer)) > 0) {
+                while ((length = fis.read(buffer)) > 0) 
+                {
                     fos.write(buffer, 0, length);
                 }
-            } catch(Exception e) {
+            } catch(Exception e) 
+            {
                e.printStackTrace();
-            }finally{
+            }finally
+            {
                 closeStream(fis);
                 
             }
@@ -104,8 +110,8 @@ public class SlangWordDAO {
     public synchronized void save(HashMap<String, ArrayList<String>> sll){
         FileOutputStream fos = null;
         OutputStreamWriter osw = null;
+        
         try{
-            
             fos = new FileOutputStream(new File(FILENAME));
             osw = new OutputStreamWriter(fos);
             
@@ -123,13 +129,16 @@ public class SlangWordDAO {
             }
             
         }
-        catch(FileNotFoundException e){
+        catch(FileNotFoundException e) 
+        {
             e.printStackTrace();
         }
-        catch(IOException e){
+        catch(IOException e)
+        {
             e.printStackTrace();
         }
-        finally{
+        finally
+        {
             closeStream(fos);
             closeStream(osw);
         }
