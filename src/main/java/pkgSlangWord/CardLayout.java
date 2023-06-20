@@ -347,21 +347,29 @@ public class CardLayout implements ItemListener, ActionListener {
         }
     }
 
-    public void slangSearchHistory() {
+    public void slangSearchHistory() 
+    {
         historyLayout.removeAll();
         
-        if (historySlangList == null) {
+        if (historySlangList == null) 
+        {
             historyLayout.add(new JLabel("Not result.."));
             System.out.println("Not Result...");
-        } else {
-            try {
-                for (String word : historySlangList) {
+        } else 
+        {
+            try 
+            {
+                for (String word : historySlangList) 
+                {
                     JLabel jText = new JLabel(word);
+                    
                     Border border = jText.getBorder();
                     Border margin = new EmptyBorder(10, 20, 10, 20);
+                    
                     jText.setBorder(new CompoundBorder(border, margin));
                     jText.setBackground(Color.lightGray);
                     jText.setOpaque(true);
+                    
                     historyLayout.add(jText);
                 }
             } catch (Exception e) {
@@ -373,19 +381,23 @@ public class CardLayout implements ItemListener, ActionListener {
         historyLayout.repaint();
     }
 
-    public void createLayout() {
+    public void createLayout() 
+    {
         createLayout = new JPanel();
         createLayout.setLayout(new GridBagLayout());
 
         GridBagConstraints constraints = new GridBagConstraints();
+        
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.insets = new Insets(10, 10, 10, 10);
 
         createSlangTextField = new JTextField("", 20);
         createDefineTextField = new JTextField("", 20);
+        
         JLabel labelSlang = new JLabel("Enter slang: ");
         JLabel labelDefine = new JLabel("Enter define: ");
         JButton createButton = new JButton("Create");
+        
         createButton.setActionCommand("createButton");
         createButton.addActionListener(this);
 
