@@ -685,7 +685,8 @@ public class CardLayout implements ItemListener, ActionListener {
         randomLayout.repaint();
     }
 
-    public void quiz1Layout() {
+    public void quiz1Layout() 
+    {
         quiz1Layout = new JPanel();
         quiz1Layout.setLayout(new BorderLayout());
         quiz1QuestionLayout = new JPanel();
@@ -702,26 +703,32 @@ public class CardLayout implements ItemListener, ActionListener {
 
         //get random slang word
         Random rand = new Random();
+        
         int int_random = rand.nextInt(slangWordList.size() - 1);
+        
         Object[] news = slangWordList.keySet().toArray();
         String quizSring = "QUIZ, Choose define of the slang word \"" + news[int_random].toString() + "\":";
 
         ArrayList<String> answerList = new ArrayList<String>();
 
         boolean addFlag = false;
-        for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
+        for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
+        {
 
-            if (answerList.size() == 4) {
+            if (answerList.size() == 4) 
+            {
                 break;
             }
-            if (entry.getKey().contains(news[int_random].toString())) {
+            if (entry.getKey().contains(news[int_random].toString())) 
+            {
                 System.out.println(entry.getKey());
                 quiz1AnswerCorrec = entry.getValue().get(0);
                 answerList.add(quiz1AnswerCorrec);
                 addFlag = true;
             } else if (addFlag) 
             {
-                if (!entry.getValue().isEmpty()) {
+                if (!entry.getValue().isEmpty()) 
+                {
                     answerList.add(entry.getValue().get(0));
                 }
             }
@@ -731,6 +738,7 @@ public class CardLayout implements ItemListener, ActionListener {
         list.add(1);
         list.add(2);
         list.add(3);
+        
         list = getRandomElement(list, 4);
 
         quiz1RadioButton1.setText(answerList.get(list.get(0)));
