@@ -421,13 +421,18 @@ public class CardLayout implements ItemListener, ActionListener {
         if (slang != "" && define != "") 
         {
             System.out.println("add new slang");
-            if (slangWordList.keySet().contains(slang)) {
+            if (slangWordList.keySet().contains(slang))
+            {
                 String[] options = {"Duplicate", "Overwrite", "Cancel"};
                 int result = JOptionPane.showOptionDialog(null, "This word already exists. Do you want to duplicate it?", "Message: " + "Add new slang word", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                
                 if (result == JOptionPane.YES_OPTION) {
                     System.out.println("Duplicate word");
-                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
-                        if (entry.getKey().contains(slang)) {
+                    
+                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
+                    {
+                        if (entry.getKey().contains(slang)) 
+                        {
                             entry.getValue().add(define);
                             break;
                         }
