@@ -502,28 +502,35 @@ public class CardLayout implements ItemListener, ActionListener {
         String editdefine = editDefineTextField.getText();
 
         System.out.println("edit new slang");
-        if (slangWordList.keySet().contains(editslang)) {
-            for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
-                if (entry.getKey().contains(editslang)) {
+        if (slangWordList.keySet().contains(editslang)) 
+        {
+            for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
+            {
+                if (entry.getKey().contains(editslang)) 
+                {
                     entry.getValue().clear();
                     entry.getValue().add(editdefine);
                     break;
                 }
             }
+            
             JOptionPane.showConfirmDialog(null,
                     "Edit slang comppleted", "Be ok!", JOptionPane.DEFAULT_OPTION);
             System.out.println("edit  slang comppleted");
-        } else {
+        } else 
+        {
             JOptionPane.showConfirmDialog(null,
                     "Slang word doesn't exist", "Be ok!", JOptionPane.DEFAULT_OPTION);
         }
     }
 
-    public void deleteLayout() {
+    public void deleteLayout() 
+    {
         deleteLayout = new JPanel();
         deleteLayout.setLayout(new GridBagLayout());
 
         GridBagConstraints constraints = new GridBagConstraints();
+        
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.insets = new Insets(10, 10, 10, 10);
 
@@ -555,22 +562,29 @@ public class CardLayout implements ItemListener, ActionListener {
                 BorderFactory.createEtchedBorder(), "Delete slang word"));
     }
 
-    public void deleteSlang() {
+    public void deleteSlang() 
+    {
         String deleteSlang = deleteSlangTextField.getText();
         System.out.println("delete  slang: " + deleteSlang);
-        if (slangWordList.keySet().contains(deleteSlang.trim())) {
+        
+        if (slangWordList.keySet().contains(deleteSlang.trim())) 
+        {
             int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure delete this word?", "Warning", JOptionPane.YES_NO_OPTION);
-            if (dialogResult == JOptionPane.YES_OPTION) {
+            
+            if (dialogResult == JOptionPane.YES_OPTION) 
+            {
                 slangWordList.remove(deleteSlang);
             }
             System.out.println("edit  slang comppleted");
-        } else {
+        } else 
+        {
             JOptionPane.showConfirmDialog(null,
                     "Slang word doesn't exist", "Be ok!", JOptionPane.DEFAULT_OPTION);
         }
     }
 
-    public void backupLayout() {
+    public void backupLayout() 
+    {
         backupLayout = new JPanel();
         backupLayout.setLayout(new GridBagLayout());
 
@@ -600,7 +614,8 @@ public class CardLayout implements ItemListener, ActionListener {
                 BorderFactory.createEtchedBorder(), "Delete slang word"));
     }
 
-    void backup() {
+    void backup() 
+    {
         slangFunction.reset();
         slangWordList = slangFunction.getSlangWordList();
     }
