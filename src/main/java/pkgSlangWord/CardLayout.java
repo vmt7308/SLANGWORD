@@ -719,7 +719,8 @@ public class CardLayout implements ItemListener, ActionListener {
                 quiz1AnswerCorrec = entry.getValue().get(0);
                 answerList.add(quiz1AnswerCorrec);
                 addFlag = true;
-            } else if (addFlag) {
+            } else if (addFlag) 
+            {
                 if (!entry.getValue().isEmpty()) {
                     answerList.add(entry.getValue().get(0));
                 }
@@ -839,6 +840,7 @@ public class CardLayout implements ItemListener, ActionListener {
         quiz2Layout = new JPanel();
         quiz2QuestionLayout = new JPanel();
         quiz2Layout.setLayout(new BorderLayout());
+        
         //quiz1QuestionLayout.setBackground(Color.RED);       
         quiz2AnswerLayout = new JPanel();
 
@@ -866,13 +868,15 @@ public class CardLayout implements ItemListener, ActionListener {
             if (answerList.size() == 4) {
                 break;
             }
-            if (entry.getKey().contains(quiz2AnswerCorrec)) {
+            if (entry.getKey().contains(quiz2AnswerCorrec)) 
+            {
                 System.out.println(entry.getKey());
                 if (!entry.getValue().isEmpty()) {
                     define = entry.getValue().get(0);
                 }
                 addFlag = true;
-            } else if (addFlag && !entry.getKey().contains(quiz2AnswerCorrec)) {
+            } else if (addFlag && !entry.getKey().contains(quiz2AnswerCorrec)) 
+            {
                 if (!entry.getValue().isEmpty()) {
                     answerList.add(entry.getKey());
                 }
@@ -949,13 +953,17 @@ public class CardLayout implements ItemListener, ActionListener {
     }
 
     public void quiz2() {
-        if (quiz2RadioButton1.isSelected()) {
+        if (quiz2RadioButton1.isSelected()) 
+        {
             quiz2Answer = quiz2RadioButton1.getText();
-        } else if (quiz2RadioButton2.isSelected()) {
+        } else if (quiz2RadioButton2.isSelected()) 
+        {
             quiz2Answer = quiz2RadioButton2.getText();
-        } else if (quiz2RadioButton3.isSelected()) {
+        } else if (quiz2RadioButton3.isSelected()) 
+        {
             quiz2Answer = quiz2RadioButton3.getText();
-        } else if (quiz2RadioButton4.isSelected()) {
+        } else if (quiz2RadioButton4.isSelected()) 
+        {
             quiz2Answer = quiz2RadioButton4.getText();
         }
 
