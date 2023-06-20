@@ -418,7 +418,8 @@ public class CardLayout implements ItemListener, ActionListener {
     public void addSlangWordFunction() {
         String slang = createSlangTextField.getText();
         String define = createDefineTextField.getText();
-        if (slang != "" && define != "") {
+        if (slang != "" && define != "") 
+        {
             System.out.println("add new slang");
             if (slangWordList.keySet().contains(slang)) {
                 String[] options = {"Duplicate", "Overwrite", "Cancel"};
@@ -431,10 +432,13 @@ public class CardLayout implements ItemListener, ActionListener {
                             break;
                         }
                     }
-                } else if (result == JOptionPane.NO_OPTION) {
+                } else if (result == JOptionPane.NO_OPTION) 
+                {
                     System.out.println("Overwrite word");
-                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
-                        if (entry.getKey().contains(slang)) {
+                    for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
+                    {
+                        if (entry.getKey().contains(slang)) 
+                        {
                             entry.getValue().clear();
                             entry.getValue().add(define);
                             break;
@@ -445,13 +449,13 @@ public class CardLayout implements ItemListener, ActionListener {
                     for (String key : keySet) {
                         System.out.println(key + " " + slangWordList.get(key));
                     }
-
                 }
             }
         }
     }
 
-    public void editLayout() {
+    public void editLayout() 
+    {
         editLayout = new JPanel();
         editLayout.setLayout(new GridBagLayout());
 
@@ -494,7 +498,8 @@ public class CardLayout implements ItemListener, ActionListener {
                 BorderFactory.createEtchedBorder(), "Eidit slang word"));
     }
 
-    public void eidtSlangFunction() {
+    public void eidtSlangFunction() 
+    {
         System.out.println("Click edit button");
         System.out.println("Slang word edit " + editSlangTextField.getText());
         System.out.println("Define edit " + editDefineTextField.getText());
@@ -502,6 +507,7 @@ public class CardLayout implements ItemListener, ActionListener {
         String editdefine = editDefineTextField.getText();
 
         System.out.println("edit new slang");
+        
         if (slangWordList.keySet().contains(editslang)) 
         {
             for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) 
