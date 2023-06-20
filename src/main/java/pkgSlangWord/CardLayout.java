@@ -605,7 +605,8 @@ public class CardLayout implements ItemListener, ActionListener {
         slangWordList = slangFunction.getSlangWordList();
     }
 
-    void randomLayout() {
+    void randomLayout() 
+    {
         randomLayout = new JPanel();
         randomLayout.setLayout(new GridBagLayout());
 
@@ -642,26 +643,35 @@ public class CardLayout implements ItemListener, ActionListener {
 
     void random() {
         randomLayout.removeAll();
+        
         Random rand = new Random();
+        
         int int_random = rand.nextInt(slangWordList.size() - 1);
         Object[] news = slangWordList.keySet().toArray();
         randomSlang.setText(news[int_random].toString());
 
         for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
 
-            if (entry.getKey().contains(news[int_random].toString())) {
+            if (entry.getKey().contains(news[int_random].toString())) 
+            {
                 System.out.println(entry.getKey());
-                for (String definfe : entry.getValue()) {
+                
+                for (String definfe : entry.getValue()) 
+                {
                     System.out.println(definfe);
+                    
                     JLabel jText = new JLabel(definfe);
+                    
                     Border border = jText.getBorder();
                     Border margin = new EmptyBorder(10, 20, 10, 20);
+                    
                     jText.setBorder(new CompoundBorder(border, margin));
                     jText.setBackground(Color.lightGray);
                     jText.setOpaque(true);
 
                     randomDefineLayout.add(jText);
                 }
+                
                 break;
             }
         }
