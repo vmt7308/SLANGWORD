@@ -795,27 +795,36 @@ public class CardLayout implements ItemListener, ActionListener {
         quiz1Layout.add(quiz1AnswerLayout, BorderLayout.CENTER);
     }
 
-    public void quiz1() {
-        if (quiz1RadioButton1.isSelected()) {
+    public void quiz1() 
+    {
+        if (quiz1RadioButton1.isSelected()) 
+        {
             quiz1Answer = quiz1RadioButton1.getText();
-        } else if (quiz1RadioButton2.isSelected()) {
+        } else if (quiz1RadioButton2.isSelected()) 
+        {
             quiz1Answer = quiz1RadioButton2.getText();
-        } else if (quiz1RadioButton3.isSelected()) {
+        } else if (quiz1RadioButton3.isSelected()) 
+        {
             quiz1Answer = quiz1RadioButton3.getText();
-        } else if (quiz1RadioButton4.isSelected()) {
+        } else if (quiz1RadioButton4.isSelected()) 
+        {
             quiz1Answer = quiz1RadioButton4.getText();
-        } else {
+        } else 
+        {
             JOptionPane.showMessageDialog(null, "Please, choose answer", "Message", JOptionPane.PLAIN_MESSAGE);
         }
 
-        if (quiz1Answer == quiz1AnswerCorrec) {
+        if (quiz1Answer == quiz1AnswerCorrec) 
+        {
             JOptionPane.showMessageDialog(null, "Correct", "Result", JOptionPane.PLAIN_MESSAGE);
-        } else {
+        } else 
+        {
             JOptionPane.showMessageDialog(null, "Wrong", "Result", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
-    public ArrayList<Integer> getRandomElement(ArrayList<Integer> list, int totalItems) {
+    public ArrayList<Integer> getRandomElement(ArrayList<Integer> list, int totalItems) 
+    {
         Random rand = new Random();
 
         // create a temporary list for storing
@@ -836,7 +845,8 @@ public class CardLayout implements ItemListener, ActionListener {
         return newList;
     }
 
-    public void quiz2Layout() {
+    public void quiz2Layout() 
+    {
         quiz2Layout = new JPanel();
         quiz2QuestionLayout = new JPanel();
         quiz2Layout.setLayout(new BorderLayout());
@@ -862,6 +872,7 @@ public class CardLayout implements ItemListener, ActionListener {
 
         ArrayList<String> answerList = new ArrayList<String>();
         answerList.add(quiz2AnswerCorrec);
+        
         boolean addFlag = false;
         for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
 
