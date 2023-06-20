@@ -16,7 +16,8 @@ public class SlangFunction {
     private HashMap<String, ArrayList<String>> slangWords;
     private SlangWordDAO slangWordDAO; 
     
-    public SlangFunction(){
+    public SlangFunction()
+    {
         slangWordDAO = new SlangWordDAO();
         slangWords = slangWordDAO.read();
         System.out.println("here");
@@ -28,18 +29,23 @@ public class SlangFunction {
         System.out.println("End loading  slang word list");
     }
     
-    public HashMap<String, ArrayList<String>> getSlangWordList(){
+    public HashMap<String, ArrayList<String>> getSlangWordList()
+    {
         return slangWords;
     }
     
-    public void CreateNewSlang(HashMap<String, ArrayList<String>> sl){
+    public void CreateNewSlang(HashMap<String, ArrayList<String>> sl)
+    {
         slangWordDAO.createNewSlang(sl);
     }
-    public void save(HashMap<String, ArrayList<String>> sl){
+    public void save(HashMap<String, ArrayList<String>> sl)
+    {
         slangWordDAO.save(sl);
+        
     }
     
-    public void reset(){
+    public void reset()
+    {
         slangWordDAO.copyFile();
         slangWordDAO.read();
     }
